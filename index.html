@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pi Unlock Assistant</title>
+</head>
+<body>
+  <h2>Pi Unlock Assistant</h2>
+  <button onclick="login()">Login with Pi</button>
+
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+  <script>
+    Pi.init({ version: "2.0" });
+
+    function login() {
+      Pi.authenticate(
+        ['payments'],
+        function(auth) {
+          alert("Logged in as " + auth.user.username);
+        },
+        function(error) {
+          console.log(error);
+        }
+      );
+    }
+  </script>
+</body>
+</html>
